@@ -1,0 +1,360 @@
+:root {
+  --wine: #5b0032;
+  --wine-dark: #3e0022;
+  --wine-soft: #70003d;
+  --gold: #d7ad3d;
+  --gold-light: #f1d06b;
+  --cream: #f8f4ed;
+  --text: #28201f;
+  --muted: #6f6462;
+  --white: #fff;
+  --shadow: 0 18px 55px rgba(45, 0, 27, .12);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--text);
+  background: var(--cream);
+  font-family: "Montserrat", Arial, sans-serif;
+  line-height: 1.65;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 20;
+  min-height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px clamp(20px, 5vw, 78px);
+  color: #fff;
+  background: rgba(62, 0, 34, .88);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(215, 173, 61, .22);
+  transition: transform .35s ease, background .35s ease;
+}
+.site-header.scrolled { background: rgba(62, 0, 34, .96); }
+
+.brand {
+  display: grid;
+  grid-template-columns: 38px auto;
+  grid-template-rows: auto auto;
+  column-gap: 10px;
+  align-items: center;
+  line-height: 1;
+}
+.brand-mark {
+  grid-row: 1 / 3;
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+}
+.brand-name {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 17px;
+  letter-spacing: .06em;
+  color: #fff4c8;
+}
+.brand-role {
+  color: var(--gold);
+  font-size: 9px;
+  letter-spacing: .48em;
+  margin-top: 4px;
+}
+
+.nav { display: flex; align-items: center; gap: 30px; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
+.nav a { opacity: .9; transition: color .2s ease, opacity .2s ease; }
+.nav a:hover { color: var(--gold-light); opacity: 1; }
+.nav-cta { border-bottom: 1px solid var(--gold); padding-bottom: 4px; }
+.menu-btn { display: none; border: 0; background: transparent; padding: 10px; }
+.menu-btn span { display: block; width: 27px; height: 2px; margin: 5px; background: var(--gold-light); }
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(280px, .92fr) minmax(390px, 1.08fr);
+  align-items: center;
+  gap: clamp(48px, 7vw, 128px);
+  overflow: hidden;
+  padding: 68px clamp(28px, 9.3vw, 174px) 62px;
+  background: #690039;
+}
+.hero-overlay { display: none; }
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 650px;
+  text-align: left;
+  color: #fff;
+  padding-top: 0;
+}
+.eyebrow, .section-kicker {
+  color: var(--gold-light);
+  letter-spacing: .42em;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.hero .eyebrow {
+  margin: 0 0 42px;
+  color: rgba(20, 11, 13, .88);
+  font-family: Impact, "Arial Black", Montserrat, Arial, sans-serif;
+  font-size: 57px;
+  font-weight: 900;
+  line-height: .92;
+  letter-spacing: 0;
+  text-shadow: 0 8px 0 rgba(112, 71, 7, .42);
+}
+.hero h1 {
+  margin: 0 0 12px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 62px;
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.14;
+  letter-spacing: 0;
+  color: #ffd200;
+}
+.hero-text {
+  max-width: 390px;
+  margin: 0 0 34px;
+  color: #fff;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 21px;
+  line-height: 1.32;
+}
+.hero .gold-button {
+  min-height: 39px;
+  padding: 9px 25px;
+  border: 0;
+  border-radius: 8px;
+  color: #fff;
+  background: #2a2a2a;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.hero .gold-button:hover { background: #383838; box-shadow: 0 12px 26px rgba(0,0,0,.2); }
+.hero-visual {
+  position: relative;
+  z-index: 2;
+  justify-self: center;
+  width: clamp(330px, 35vw, 520px);
+  aspect-ratio: 1;
+}
+.hero-emblem {
+  width: 100%;
+  height: 100%;
+  background-color: #690039;
+  background-image: url("assets/HERO_EMBLEM.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+.gold-button, .outline-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 27px;
+  border: 1px solid var(--gold);
+  font-size: 11px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  transition: transform .25s ease, background .25s ease, color .25s ease, box-shadow .25s ease;
+}
+.gold-button { color: var(--wine-dark); background: var(--gold); }
+.gold-button:hover { transform: translateY(-2px); background: var(--gold-light); box-shadow: 0 12px 28px rgba(0,0,0,.18); }
+.gold-button.small { margin-top: 14px; }
+.outline-button { color: var(--wine); background: transparent; }
+.outline-button:hover { background: var(--wine); color: #fff; }
+.outline-button.light { color: #fff; }
+.outline-button.light:hover { background: #fff; color: var(--wine); }
+
+.scroll-cue {
+  position: absolute;
+  z-index: 2;
+  bottom: 27px;
+  left: 50%;
+  width: 20px;
+  height: 34px;
+  transform: translateX(-50%);
+  border: 1px solid rgba(255,255,255,.65);
+  border-radius: 20px;
+}
+.hero .scroll-cue { display: none; }
+.scroll-cue span { display: block; width: 3px; height: 7px; margin: 7px auto; background: var(--gold); border-radius: 3px; animation: scroll 1.5s infinite; }
+@keyframes scroll { 0%,100% { transform: translateY(0); opacity: .45; } 50% { transform: translateY(7px); opacity: 1; } }
+
+.section { padding: clamp(80px, 10vw, 135px) clamp(22px, 7vw, 110px); }
+.services { background: var(--cream); text-align: center; }
+.section-heading { max-width: 720px; margin: 0 auto 55px; }
+.section-heading h2, .about h2, .contact h2 {
+  margin: 8px 0 14px;
+  font: 500 clamp(43px, 5vw, 64px)/1 "Cormorant Garamond", Georgia, serif;
+  color: var(--wine);
+}
+.section-heading p { margin: 6px 0; color: var(--muted); font-size: 14px; }
+.gold-line { width: 90px; height: 1px; margin: 0 auto 20px; background: var(--gold); }
+.gold-line.left { margin-left: 0; }
+
+.service-grid {
+  width: min(1120px, 100%);
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.service-card {
+  min-height: 320px;
+  padding: 34px 25px;
+  background: #fff;
+  border: 1px solid rgba(91,0,50,.08);
+  box-shadow: var(--shadow);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.service-card:hover { transform: translateY(-7px); box-shadow: 0 25px 65px rgba(45,0,27,.16); }
+.service-icon {
+  width: 76px; height: 76px; margin: 0 auto 22px;
+  border-radius: 50%; overflow: hidden;
+  background: var(--wine);
+}
+.service-icon img { width: 100%; height: 100%; object-fit: cover; }
+.service-card h3 { color: var(--wine); font: 600 24px/1.05 "Cormorant Garamond", Georgia, serif; margin: 0 0 12px; }
+.service-card p { color: var(--muted); font-size: 12.5px; margin: 0; }
+.services-cta { margin-top: 45px; }
+
+.about {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.85fr) minmax(320px, 1.15fr);
+  gap: clamp(45px, 8vw, 110px);
+  align-items: center;
+  background: #fff;
+}
+.about-image { display: flex; justify-content: center; }
+.portrait-frame {
+  width: min(480px, 100%);
+  aspect-ratio: 1 / 1;
+  background: var(--wine);
+  border: 12px solid #f4ecdb;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.portrait-frame img { width: 100%; height: 100%; object-fit: cover; }
+.about-copy { max-width: 680px; }
+.about-copy p { color: var(--muted); font-size: 15px; max-width: 650px; }
+.about-copy strong { color: var(--wine); }
+
+.contact {
+  background: var(--wine-dark);
+  color: #fff;
+  text-align: center;
+  padding-top: 95px;
+  padding-bottom: 95px;
+}
+.contact h2 { color: #fff7df; }
+.contact p { color: rgba(255,255,255,.78); }
+.contact-actions { display: flex; justify-content: center; gap: 14px; margin-top: 30px; }
+
+.footer {
+  background: #250016;
+  color: rgba(255,255,255,.7);
+  padding: 40px clamp(22px, 7vw, 110px) 25px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  align-items: center;
+}
+.footer-brand img { width: 210px; height: 125px; object-fit: cover; object-position: center; }
+.footer-info { display: flex; flex-direction: column; gap: 4px; font-size: 12px; }
+.footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.footer-link img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+.footer-info a:hover { color: var(--gold-light); }
+.copyright { grid-column: 1 / -1; margin: 15px 0 0; padding-top: 18px; border-top: 1px solid rgba(215,173,61,.16); text-align: center; font-size: 10px; }
+
+.reveal { opacity: 0; transform: translateY(25px); transition: opacity .75s ease, transform .75s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 900px) {
+  .nav { gap: 17px; }
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 34px;
+    padding: 92px clamp(24px, 7vw, 60px) 58px;
+  }
+  .hero-content {
+    max-width: 680px;
+    text-align: center;
+    justify-self: center;
+  }
+  .hero .eyebrow { margin-bottom: 28px; }
+  .hero .eyebrow { font-size: 48px; }
+  .hero h1 { font-size: 58px; }
+  .hero-text { margin-right: auto; margin-left: auto; }
+  .hero-visual {
+    order: -1;
+    width: min(420px, 74vw);
+  }
+  .service-grid { grid-template-columns: repeat(2, 1fr); }
+  .about { grid-template-columns: 1fr; }
+  .about-image { order: 2; }
+  .about-copy { margin: auto; }
+}
+@media (max-width: 700px) {
+  .site-header { min-height: 68px; }
+  .brand-name { font-size: 13px; }
+  .brand-role { font-size: 7px; }
+  .brand-mark { font-size: 43px; }
+  .nav {
+    position: absolute;
+    top: 68px; left: 0; right: 0;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: rgba(62,0,34,.98);
+    border-bottom: 1px solid rgba(215,173,61,.2);
+  }
+  .nav.open { display: flex; }
+  .nav a { padding: 16px 24px; }
+  .nav-cta { border: 0; }
+  .menu-btn { display: block; }
+  .hero {
+    min-height: 100svh;
+    background-image: none;
+    background-color: #690039;
+    padding-top: 82px;
+  }
+  .hero-content { padding-top: 0; }
+  .hero .eyebrow { font-size: 38px; }
+  .hero h1 { font-size: 43px; }
+  .hero-text { font-size: 17px; padding: 0 10px; }
+  .hero-visual { width: min(315px, 82vw); }
+  .service-grid { grid-template-columns: 1fr; max-width: 470px; }
+  .service-card { min-height: 285px; }
+  .contact-actions { flex-direction: column; align-items: center; }
+  .footer { grid-template-columns: 1fr; text-align: center; justify-items: center; }
+  .footer-info { align-items: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
